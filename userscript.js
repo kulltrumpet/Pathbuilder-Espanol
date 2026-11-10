@@ -14,10 +14,11 @@
 // @exclude      *://mail.google.com/*
 
 // @require      https://code.jquery.com/jquery-3.4.1.min.js
-// @require      https://gist.githubusercontent.com/BrockA/2625891/raw/9c97aa67ff9c5d56be34a55ad6c18a314e5eb548/waitForKeyElements.js
 
 // @licence      CC-BY-NC-SA-4.0; https://creativecommons.org/licenses/by-nc-sa/4.0/
 // @licence      GPL-3.0-or-later; http://www.gnu.org/licenses/gpl-3.0.txt
+// @downloadURL https://update.greasyfork.org/scripts/604152/Pathbuilder%20Espa%C3%B1ol.user.js
+// @updateURL https://update.greasyfork.org/scripts/604152/Pathbuilder%20Espa%C3%B1ol.meta.js
 // ==/UserScript==
 /* jshint esversion: 6 */
 
@@ -182,6 +183,27 @@ DB. support functions
             [/The sturdy plate provides no purchase for a cutting edge\. You gain resistance to slashing damage equal to 1 \+ the value of the armor’s potency rune for medium armor, or 2 \+ the value of the armor’s potency rune for heavy armor\./i, "Las recias placas no proporcionan agarre alguno a un filo cortante. Obtienes una resistencia al daño cortante igual a 1 + el valor de la runa de potencia de la armadura para las armaduras intermedias o 2 + el valor de la runa de potencia de la armadura para las armaduras pesadas."],
             [/The thick second skin of the armor disperses blunt force to reduce bludgeoning damage\. You gain resistance to bludgeoning damage equal to 1 \+ the value of the armor’s potency rune for medium armor, or 2 \+ the value of the armor’s potency rune for heavy armor\./i, "La gruesa segunda piel de la armadura dispersa la fuerza bruta para reducir el daño contundente. Obtienes una resistencia al daño contundente igual a 1 + el valor de la runa de potencia de la armadura para las armaduras intermedias o 2 + el valor de la runa de potencia de la armadura para las armaduras pesadas."],
 
+            // other trait descriptions
+            [/This indicates abilities from the alchemist class./, "Esto indica aptitudes de la clase alquimista."],
+            [/This indicates abilities from the barbarian class./, "Esto indica aptitudes de la clase bárbaro."],
+            [/This indicates abilities from the bard class./, "Esto indica aptitudes de la clase bardo."],
+            [/This indicates abilities from the champion class./, "Esto indica aptitudes de la clase campeón."],
+            [/This indicates abilities from the cleric class./, "Esto indica aptitudes de la clase clérigo."],
+            [/This indicates abilities from the druid class./, "Esto indica aptitudes de la clase druida."],
+            [/This indicates abilities from the fighter class./, "Esto indica aptitudes de la clase guerrero."],
+            [/This indicates abilities from the investigator class./, "Esto indica aptitudes de la clase investigador."],
+            [/This indicates abilities from the monk class./, "Esto indica aptitudes de la clase monje."],
+            [/This indicates abilities from the oracle class./, "Esto indica aptitudes de la clase oráculo."],
+            [/This indicates abilities from the ranger class./, "Esto indica aptitudes de la clase explorador."],
+            [/This indicates abilities from the rogue class./, "Esto indica aptitudes de la clase pícaro."],
+            [/This indicates abilities from the sorcerer class./, "Esto indica aptitudes de la clase hechicero."],
+            [/This indicates abilities from the swashbuckler class./, "Esto indica aptitudes de la clase espadachín."],
+            [/This indicates abilities from the witch class./, "Esto indica aptitudes de la clase brujo."],
+            [/This indicates abilities from the wizard class./, "Esto indica aptitudes de la clase mago."],
+            [/Actions with the flourish trait are special techniques that require too much exertion for you to perform frequently. You can use only one action with the flourish trait per round./, "Las acciones con este rasgo son técnicas especiales que requieren demasiado esfuerzo para que las lleves a cabo de forma frecuente. Sólo puedes utilizar 1 acción con el rasgo floritura por turno."],
+            [/A healing effect restores a creature's body, typically by restoring Hit Points, but sometimes by removing diseases or other debilitating effects./, "Un efecto de curación restaura el cuerpo de una criatura, típicamente restableciendo Puntos de Golpe, pero a veces eliminando enfermedades u otros efectos debilitantes."],
+            [/You must be raging to use abilities with the rage trait, and they end automatically when you stop raging./, "Debes estar en furia para usar habilidades con el rasgo furia y terminan automáticamente cuando dejas de estar en furia."],
+
             // ancestry feature descriptions
             [/You can see in dim light as though it were bright light, and you ignore the concealed condition due to dim light\./, "Puedes ver en luz tenue como si fuera luz brillante, por lo que ignoras el estado oculto debido a la luz tenue."],
             [/You can see in darkness and dim light just as well as you can see in bright light, though your vision in darkness is in black and white\./, "Puedes ver en la oscuridad y en luz tenue igual de bien que con luz brillante, aunque tu visión en la oscuridad es en blanco y negro."],
@@ -197,6 +219,9 @@ DB. support functions
             [/\bEquipment Information\b/i, "Información sobre el equipo"],
             [/\bProficiency Information\b/i, "Información sobre competencia"],
             [/\bContainer Options\b/i, "Opciones de recipiente"],
+            [/\bSet Current Amount\b/, "Poner cantidad actual"],
+            [/\bAdjust Current Amount\b/, "Ajustar cantidad actual"],
+            [/\bSimplify All Coins\b/, "Simplificar todas monedas"],
             [/\bSet XP\b/, "Poner PX"],
             [/\bSet Character Level\b/, "Poner el nivel del personaje"],
             [/\bSet Hit Points\b/, "Poner puntos de golpe"],
@@ -208,6 +233,7 @@ DB. support functions
             [/Really buy/, "¿Realmente quieres comprar"],
             [/Warning: this will simplify your coins\./, "Aviso: va a simplificar tus monedas."],
             [/Really delete this weapon\?/i, "¿Realmente quieres borrar esta arma?"],
+            [/Really delete/i, "¿Realmente quieres borrar"],
             [/Really stow this weapon to the gear tab\?/i, "¿Realmente quieres guardar esta arma en la pestaña 'Equipo'?"],
             [/Really stow this armor to the gear tab\?/i, "¿Realmente quieres guardar esta armadura en la pestaña 'Equipo'?"],
             [/Really remove this shield from your character\?/i, "¿Realmente quieres quitar este escudo de tu personaje?"],
@@ -230,7 +256,14 @@ DB. support functions
             [/\bDescription\b/, "Descripción"],
             [/\bSource\b/, "Fuente"],
             [/Action description \(Leave blank for no action\)/, "Descripción de la acción (déjalo en blanco si no hay acción)"],
+            [/\bPC1\b/, "Manual de juego"],
+            [/\bPC2\b/, "Manual de juego 2"],
+            [/Character Options/, "Ajustes de personaje"],
+            [/New Character/, "Nuevo personaje"],
+            [/Save Character\b/i, "Guardar personaje"],
+            [/Open Character/, "Abrir personaje"],
 
+            [/\bAdd Ritual\b/, "Añadir ritual"],
             [/\bBonus Spells\b/, "Conjuros adicionales"],
 
             [/Animal Companions, Eidolons, Constructs and Familiars are gained from feats and class features\. You do not have an Animal Companion, Eidolon or Familiar at this level\./i, "Los compañeros animales, ídolos, constructos y familiares se obtiene por dotes y rasgos de clase. En este nivel no tienes compañero animal, ídolo o familiar."],
@@ -277,7 +310,6 @@ DB. support functions
 
             [/\bChthonian\b/, "Chthoniano"],
             [/\bDiabolic\b/, "Diabólico"],
-            [/\bDraconic\b/, "Dracónico"],
             [/\bEmpyrean\b/, "Empíreo"],
             [/\bGnomish\b/, "Gnomo"],
             [/\bOrcish\b/, "Orco"],
@@ -853,6 +885,76 @@ DB. support functions
             [/The target is paralyzed for 4 rounds\./, "El objetivo queda paralizado durante 4 asaltos."],
             [/The target is paralyzed for 4 rounds, knocked unconscious for 2 hours, or killed \(your choice\)\./, "El objetivo queda paralizado durante 4 asaltos, inconsciente durante 2 horas o muere (a elegir por ti)."],
             [/\bMaster Rogue\b/, "Maestría de pícaro"],
+            [/\bAnimal Instinct\b/, "Instinto de animal"],
+            [/\banimal instinct\b/, "instinto de animal"],
+            [/\bApe\b/, "Simio"],
+            [/\bBear\b/, "Oso"],
+            [/\bBull\b/, "Toro"],
+            [/\bCat\b/, "Gato"],
+            [/\bDeer\b/, "Ciervo"],
+            [/\bFrog\b/, "Rana"],
+            [/\bShark\b/, "Tiburón"],
+            [/\bSnake\b/, "Serpiente"],
+            [/\bWolf\b/, "Lobo"],
+            [/Bestial Rage/, "Furia bestial"],
+            [/While raging, you gain your chosen animal’s unarmed attack \(or attacks\), but you’re unable to use weapons\. The specific attack gained, the damage it deals, and its traits are listed in the Animal Instincts table\. These attacks are in the brawling group\. Your Rage action gains the morph and primal traits\./, "Mientras estás en furia, obtienes el ataque (o ataques) sin armas del animal elegido, pero no puedes usar armas. El ataque específico obtenido, el daño que inflige y sus rasgos se indican en la tabla Instintos animales. Estos ataques pertenecen al grupo pelea. Con tu acción de Furia obtienes los rasgos morfismo y primigenio."],
+            [/Increase the damage die size for the unarmed attacks granted by your chosen animal by one step, and increase the additional damage from Rage from 2 to 5 for your chosen animal’s unarmed attacks. If you have greater weapon specialization, increase the damage from Rage from 5 to 12 for your chosen animal’s unarmed attacks./, "Incrementa en un paso el tamaño del dado de daño de los ataques sin armas otorgados por el animal que hayas elegido, y aumenta el daño adicional de Furia de 2 a 5 para los ataques sin armas de tu animal elegido. Si tienes especialización mayor en armas, aumenta el daño de Furia de 5 a 12 para los ataques sin armas del animal que hayas elegido."],
+            [/You resist piercing and slashing damage./, "Resistes el daño perforante y cortante."],
+            [/\bDragon Instinct\b/, "Instinto de dragón"],
+            [/Dragon Type/, "tipo de dragón"],
+            [/Dragon Breath/, "Aliento de dragón"],
+            [/\bAdamantine\b/, "Adamantino"],
+            [/Cone of bludgeoning/, "Contundente"],
+            [/\bConspirator\b/, "Conspirador"],
+            [/Cone of poison/, "Veneno"],
+            [/Cone of fire/, "Fuego"],
+            [/\bEmpyreal\b/, "Empíreo"],
+            [/Cone of spirit/, "Espíritu"],
+            [/\bFortune\b/, "De la fortuna"],
+            [/Cone of force/, "Fuerza"],
+            [/\bHorned\b/, "Astado"],
+            [/\bMirage\b/, "Espejismo"],
+            [/Cone of mental/, "Mental"],
+            [/\bOmen\b/, "Presagio"],
+            [/Draconic Rage/, "Furia dracónica"],
+            [/When you rage, you can increase the additional damage from Rage from 2 to 4 and change its damage type to match that of your instinct’s dragon breath instead of the damage type for your weapon or unarmed attack. If you do this, your Rage action gains the trait matching your dragon instinct’s tradition, as well as the trait matching the damage type where applicable./, "Cuando entras en furia, puedes aumentar el daño adicional de Furia de 2 a 4 y cambiar su tipo de daño para que coincida con el del aliento de dragón de tu instinto en lugar del tipo de daño de tu arma o ataque sin armas. Si haces esto, tu acción de Furia obtiene el rasgo que coincida con la tradición de tu instinto de dragón, así como el rasgo que coincida con el tipo de daño cuando sea aplicable."],
+            [/When you use draconic rage, you increase the additional damage from Rage from 4 to 8. If you have greater weapon specialization, instead increase the damage from Rage when using draconic rage from 8 to 16./, "Cuando usas furia dracónica, aumentas el daño adicional de Furia de 4 a 8. Si tienes especialización mayor en armas, en vez de eso aumenta el daño de Furia al usar Furia dracónica de 8 a 16."],
+            [/\bdragon instinct\b/, "instinto de dragón"],
+            [/You resist piercing damage and the damage type of your instinct’s dragon breath./, "Resistes el daño perforante y el tipo de daño del aliento de dragón de tu instinto."],
+            [/\bFury Instinct\b/, "Instinto de la rabia"],
+            [/\bfury instinct\b/, "instinto de la rabia"],
+            [/Unstoppable Frenzy/, "Frenesí imparable"],
+            [/Increase the additional damage from Rage from 2 to 3. You gain a bonus 1st-level barbarian feat./, "Aumenta el daño adicional de Furia de 2 a 3. Obtienes una dote de bárbaro de 1.er nivel adicional."],
+            [/Increase the additional damage from Rage from 3 to 7. If you have greater weapon specialization, instead increase the additional damage from Rage to 13./, "Aumenta el daño adicional de Furia de 3 a 7. Si tienes especialización mayor en armas, aumenta el daño adicional de Furia a 13."],
+            [/You resist physical weapon damage, but not physical damage from other sources \(such as unarmed attacks\)\./, "Resistes el daño físico de las armas, pero no el daño físico de otras fuentes (como ataques sin armas)."],
+            [/\bGiant Instinct\b/, "Instinto de gigante"],
+            [/\bgiant instinct\b/, "instinto de gigante"],
+            [/Titan Mauler/, "Machacador de titanes"],
+            [/You can use a weapon built for a Large creature if you are Small or Medium \(both normally and when raging\)\. If you’re not Small or Medium, you can use a weapon built for a creature one size larger than you\. You start with one such weapon, which you receive for free\. It must be a common melee or ranged weapon, it must have a Price of 9 gp or less \(not including the Price adjustment for being a larger weapon\), and it must be common or you must otherwise have access to it\. It is your personal weapon and has no value if sold unless you later add runes to it, and it has the normal Bulk for a weapon of its size\. When wielding a larger weapon in combat, increase your additional damage from Rage from 2 to 6, but you have the clumsy 1 condition because of the weapon’s unwieldy size\. You can’t remove this clumsy condition or ignore its penalties by any means while wielding the weapon\./, "Puedes usar un arma diseñada para una criatura Grande siendo Pequeño o Mediano (tanto normalmente como cuando estás en furia). Si no eres Pequeño o Mediano, puedes usar un arma diseñada para una criatura una categoría de tamaño mayor que tú. Empiezas con una de estas armas, que obtienes gratuitamente. Debe ser un arma común cuerpo a cuerpo o a distancia, debe tener un precio de 9 po o menos (sin incluir el ajuste de Precio por ser un arma más grande), y debe ser común o debes tener acceso a ella. Es tu arma personal y no tiene valor si la vendes a menos que le añadas runas más tarde, y tiene la Impedimenta normal para un arma de su tamaño (Manual de juego, 270). Cuando empuñas un arma más grande en combate, aumenta tu daño adicional de Furia de 2 a 6, pero se te impone el estado torpe 1 debido al tamaño poco manejable del arma. No puedes eliminar este estado torpe o ignorar sus penalizadores por ningún medio mientras empuñas el arma"],
+            [/Increase the damage from Rage when using a larger weapon from 6 to 10; if you have greater weapon specialization, increase it from 10 to 18./, "Aumenta el daño de Furia al usar un arma más grande de 6 a 10; si tienes especialización mayor en armas, aumenta de 10 a 18."],
+            [/You resist bludgeoning damage and your choice of cold, electricity, or fire, chosen when you gain raging resistance./, "Resistes el daño contundente y la electricidad, el frío o el fuego, lo que elijas cuando obtengas Resistencia furiosa."],
+            [/\bSpirit Instinct\b/, "Instinto de los espíritus"],
+            [/\bspirit instinct\b/, "instinto de los espíritus"],
+            [/Spirit Rage/, "Furia espiritual"],
+            [/When you rage, you can increase the additional damage from Rage from 2 to 3 and change its damage type to spirit, instead of the damage type for your weapon or unarmed attack \(choose each time you Rage\)\. If you choose to deal spirit damage, your weapon or unarmed attack gains the effects of the ghost touch property rune, which makes it more effective against incorporeal creatures, and your Rage action gains the divine and spirit traits\./, "Cuando entras en furia, puedes aumentar el daño adicional de Furia de 2 a 3 y cambiar su tipo de daño a espiritual, en lugar del tipo de daño de tu arma o ataque sin armas (elige cada vez que entres en furia). Si eliges infligir daño espiritual, tu arma o ataque sin armas obtiene los efectos de la runa de propiedad toque fantasmal, que lo vuelve más efectivo contra criaturas incorporales, y tu acción de Furia obtiene los rasgos divino y espíritu."],
+            [/When using spirit rage, increase the damage from Rage from 3 to 7. If you have greater weapon specialization, instead increase the damage when using spirit rage to 13./, "Al usar Furia espiritual, aumenta el daño de Furia de 3 a 7. Si tienes especialización mayor en armas, en su lugar aumenta el daño al usar furia espiritual a 13."],
+            [/You resist void damage, as well as damage dealt by the attacks and abilities of undead creatures, regardless of the damage type./, "Resistes el daño por vacío, así como el daño infligido por los ataques y aptitudes de criaturas muertas vivientes, independientemente del tipo de daño."],
+            [/\bSuperstition Instinct\b/, "Instinto de superstición"],
+            [/\bsuperstition instinct\b/, "instinto de superstición"],
+            [/Superstitious Resilience/, "Resistencia supersticiosa"],
+            [/Your deep superstition means it’s anathema for you to learn or Cast a Spell, or to wield or use an item that can be activated to Cast a Spell. If you violate this anathema, you lose the instinct’s abilities and any feats that list the instinct as a prerequisite until you spend 1 day of downtime re-centering yourself, though you keep all your other barbarian abilities./, "Tu profunda superstición implica que es un anatema para ti aprender o Lanzar un conjuro, o empuñar o usar un objeto que pueda activarse para Lanzar un conjuro. Si incumples este anatema, pierdes las aptitudes de instinto y cualquier dote que incluya el instinto como prerrequisito hasta que inviertas 1 día de tiempo libre en volver a centrarte, aunque conservas todas tus demás aptitudes de bárbaro."],
+            [/Increase the damage from Rage from 3 to 7, or 8 against creatures you have witnessed Casting a Spell within the last hour. If you have greater weapon specialization, instead increase the damage from Rage to 13, or 16 against creatures you have witnessed Casting a Spell within the last hour./, "Aumenta el daño de Furia de 3 a 7, u 8 contra criaturas a las que hayas presenciado lanzar un conjuro en la última hora. Si tienes especialización mayor en armas, aumenta el daño de Furia a 13, o 16 contra criaturas que hayas visto lanzar un conjuro en la última hora."],
+            [/Choose two associated magical traditions: arcane and occult, arcane and primal, divine and occult, or divine and primal. The resistance from your raging resistance class feature applies against all damage you take from spells cast with these two traditions of magic, regardless of the type of damage dealt by the spell./, "Elige dos tradiciones mágicas asociadas: arcana y ocultista, arcana y primigenio, divino y ocultista, o divino y primigenio. La resistencia de tu rasgo de clase resistencia furiosa se aplica contra todo el daño que sufras de conjuros lanzados por estas dos tradiciones mágicas, independientemente del tipo de daño infligido por el conjuro."],
+            [/\bInstinct Ability\b/, "Aptitud de instinto"],
+            [/\bSpecialization Ability\b/, "Aptitud de especialización"],
+            [/\bRaging Resistance\b/, "Resistencia furiosa"],
+            [/\bInstinct\b/, "Instinto"],
+            [/\bRage\b/, "Furia"],
+            [/You aren't fatigued or raging. You tap into your inner fury and begin raging\. You gain a number of temporary Hit Points equal to your level plus your Constitution modifier\. While you are raging:/, "No estás fatigado ni en furia."],
+            [/Quick-Tempered/, "Temperamental"],
+            [/You roll initiative./, "Tiras iniciativa."],
+            [/You are not encumbered or wearing heavy armor./, "No estás impedido ni llevas puesta una armadura pesada."],
+            [/\bFurious Footfalls\b/, "Pisadas furiosas"],
 
             // class feats
             [/\bClass Feat\b/, "Dote de clase"],
@@ -921,7 +1023,7 @@ DB. support functions
             [/\bVicious Swing\b/, "Golpe cruel"],
             [/Nimble Dodge/, "Esquiva ágil"],
             [/A creature targets you with an attack and you can see the attacker./, "Una criatura te designa como objetivo de un ataque y puedes ver al atacante."],
-            [/You are not encumbered./, "No estás impedido."],
+            [/You are not encumbered\./, "No estás impedido."],
             [/Overextending Feint/, "Finta excesiva"],
             [/The target takes a –2 circumstance penalty to all attack rolls against you before the end of its next turn./, "El objetivo sufre un penalizador -2 por circunstancia a todas las tiradas de ataque contra ti antes del final de su siguiente turno."],
             [/The target takes a –2 circumstance penalty to its next attack roll against you before the end of its next turn./, "El objetivo sufre un penalizador -2 por circunstancia a su siguiente tirada de ataque contra ti antes del final de su siguiente turno."],
@@ -931,6 +1033,12 @@ DB. support functions
             [/You're Next/, "Ahora te toca a ti"],
             [/You reduce an enemy to 0 Hit Points./, "Reduces a 0 Puntos de Golpe a un enemigo."],
             [/Plant Evidence/, "Incriminar"],
+            [/Acute Vision/, "Visión aguda"],
+            [/Adrenaline Rush/, "Descarga de adrenalina"],
+            [/Draconic Arrogance/, "Arrogancia dracónica"],
+            [/Moment of Clarity/, "Momento de claridad"],
+            [/Raging Intimidation/, "Intimidación furiosa"],
+            [/Raging Thrower/, "Lanzador furioso"],
 
             // skill feats
             [/\bSkill Feat\b/, "Dote de habilidad"],
@@ -1614,7 +1722,6 @@ DB. support functions
             [/The amount of healing increases by 1d10\+4\./, "La cantidad de curación se incrementa en 1d10+4."],
 
             [/\bSummon Fey\b/, "Convocar hada"],
-            [/\bFey\b/, "Feérico"],
 
             [/\bSummon Plant or Fungus\b/, "Convocar planta u hongo"],
 
@@ -2563,6 +2670,8 @@ DB. support functions
             [/\bComfort\b/, "Cómoda"],
             [/\bNoisy\b/, "Ruidosa"],
 
+            [/\bFlourish\b/, "Floritura"],
+
             [/\bAcrobatics\b/, "Acrobacias"],
             [/\bArcana\b/, "Arcanos"],
             [/\bAthletics\b/, "Atletismo"],
@@ -2584,10 +2693,16 @@ DB. support functions
 
             [/\bconcentrate\b/, "concentrar"],
             [/\bConcentrate\b/, "Concentrar"],
+            [/\btradition\b/, "tradición"],
+            [/\bTradition\b/, "Tradición"],
             [/\barcane\b/, "arcana"],
+            [/\bArcane\b/, "Arcana"],
             [/\bdivine\b/, "divina"],
+            [/\bDivine\b/, "Divina"],
             [/\boccult\b/, "ocultista"],
+            [/\bOccult\b/, "Ocultista"],
             [/\bprimal\b/, "primigenia"],
+            [/\bPrimal\b/, "Primigenia"],
 
             [/\bSHIELD\b/, "ESCUDO"],
             [/\bNo Shield\b/, "Sin escudo"],
@@ -2681,12 +2796,17 @@ DB. support functions
             [/\bRange\b/, "Rango de distancia"],
             [/\btouch\b/, "toque"],
             [/\bDefense\b/, "Defensa"],
+            [/\bSaving Throw\b/, "Defensa"],
             [/\bbasic Fortitude\b/, "Fortaleza básica"],
             [/\bbasic Reflex\b/, "Reflejos básica"],
             [/\bbasic Will\b/, "Voluntad básica"],
             [/\bBasic\b/, "Básica"],
             [/\bSkill\b/, "Habilidad"],
+            [/\bSkills\b/, "Habilidades"],
+            [/\bGear\b/, "Equipo"],
             [/\bExploration\b/, "Exploración"],
+            [/\bDowntime\b/, "Tiempo libre"],
+            [/\bActivity\b/, "Actividad"],
             [/\bDuration\b/, "Duración"],
             [/\bsee below\b/, "ver más abajo"],
             [/\bsustained\b/, "mantenido"],
@@ -2718,6 +2838,8 @@ DB. support functions
             [/\bTarget\b/, "Objetivo"],
             [/\bReload\b/, "Recarga"],
             [/\bAmount\b/, "Cantidad"],
+            [/\bSet\b/, "Poner"],
+            [/\bAdjust\b/, "Ajustar"],
             [/\bQty\b/, "Ctd"],
             [/\bRequirements\b/, "Requisitos"],
             [/\bPrerequisites\b/, "Prerrequisitos"],
@@ -2752,9 +2874,13 @@ DB. support functions
             [/(?<=\d)\s?gp\b/, "po"],
             [/(?<=\d)\s?sp\b/, "pp"],
             [/(?<=\d)\s?cp\b/, "pc"],
+            [/\bPlatinum Pieces\b/, "Piezas de platino"],
             [/\bPlatinum\b/, "Platino"],
+            [/\bGold Pieces\b/, "Piezas de oro"],
             [/\bGold\b/, "Oro"],
+            [/\bSilver Pieces\b/, "Piezas de plata"],
             [/\bSilver\b/, "Plata"],
+            [/\bCopper Pieces\b/, "Piezas de cobre"],
             [/\bCopper\b/, "Cobre"],
 
             [/\bHP\b/, "PG"],
@@ -2762,6 +2888,9 @@ DB. support functions
             [/\bTemp Hit Points\b/, "Puntos de golpe temp."],
             [/\bHit Points\b/, "Puntos de golpe"],
             [/\bHIT POINTS\b/, "PUNTOS DE GOLPE"],
+
+            [/\bDraconic\b/, "Dracónico"],
+            [/\bFey\b/, "Feérico"],
 
             [/\bBuy\b/, "Comprar"],
             [/\bGive\b/, "Darte"],
@@ -2922,6 +3051,9 @@ DB. support functions
             [/\bRuidosa\b/, "Noisy"],
 
             [/\bConcentrar\b/, "Concentrate"],
+            [/\bCuración\b/, "Healing"],
+            [/\bFloritura\b/, "Flourish"],
+            [/\bFuria\b/, "Rage"],
         ];
 
         // specialized rules for optimization and to handle multiple Spanish words for one English word
@@ -3366,6 +3498,7 @@ DB. support functions
             [/Fighting for honor, greed, loyalty, or simply the thrill of battle, you are an undisputed master of weaponry and combat techniques. You combine your actions through clever combinations of opening moves, finishing strikes, and counterattacks whenever your foes are unwise enough to drop their guard. Whether you are a knight, mercenary, sharpshooter, or blade master, you have honed your martial skills into an art form and perform devastating critical attacks on your enemies./, "Tanto si luchas por honor, por avaricia, por lealtad o simplemente por la emoción de la batalla, eres un maestro indiscutible de las armas y de las técnicas de combate. Combinas tus acciones mediante una mezcla inteligente de movimientos de abertura, golpes de remate y contraataques siempre que tus enemigos son lo suficientemente incautos como para bajar la guardia. Ya seas un caballero, un mercenario, un francotirador o un maestro de la espada, has refinado tus habilidades marciales en una forma de arte que te permite llevar a cabo devastadores ataques críticos contra tus enemigos."],
             [/You are an eternal student of the secrets of the universe, using your mastery of magic to cast powerful spells\. You treat magic like a science, cross-referencing the latest texts on practical spellcraft with ancient tomes to discover and understand arcane magic\. Yet magical theory is vast, and there's no way you can study it all\. Most wizards learn through formal schooling, with their curriculum informing a specific rubric, although particularly driven researchers sometimes piece together their own theories\./, "Eres un alumno eterno de los secretos arcanos del universo y utilizas tu dominio de la magia para lanzar potentes conjuros. Tratas la magia como una ciencia, cruzando referencias entre los últimos textos sobre lanzamiento práctico de conjuros y antiguos tomos para descubrir y entender cómo funciona la magia arcana. Aun así, la teoría mágica es vasta y no hay forma de estudiarla en su totalidad. La mayoría de los magos aprenden a través de una educación formal y su currículo informa una rúbrica específica, aunque a veces, algunos investigadores particularmente motivados reúnen por sí solos sus propias teorías."],
             [/You are skilled and opportunistic\. Using your sharp wits and quick reactions, you take advantage of your opponents’ missteps and strike where it hurts most\. You play a dangerous game, seeking thrills and testing your skills, and likely don’t care much for any laws that happen to get in your way\. While the path of every rogue is unique and riddled with danger, the one thing you all share in common is the breadth and depth of your skills\./, "Eres hábil y oportunista. Utilizando tu aguda inteligencia y tus rápidas reacciones, sacas partido de los pasos en falso de tu oponente y pegas donde más duele. Tu juego es peligroso, buscando emociones y poniendo a prueba tus habilidades sin que probablemente te preocupen demasiado las leyes que se interpongan en tu camino. Si bien la senda de cada pícaro es única y está salpicada de peligros, lo que tenéis todos en común es la amplitud y la profundidad de vuestras habilidades."],
+            [/Rage consumes you in battle. You delight in wreaking havoc and using powerful weapons to carve through your enemies, relying on astonishing durability without needing complicated techniques or rigid training. Your rages draw upon a vicious instinct, which you might associate with an animal, a spirit, or some part of yourself. To many barbarians, brute force is a hammer and every problem looks like a nail, whereas others try to hold back the storm of emotions inside them and release their rage only when it matters most./, "La furia te consume en la batalla. Te deleitas causando estragos y utilizando armas poderosas para atravesar a tus enemigos, confiando en una durabilidad asombrosa sin necesidad de técnicas complicadas ni de un entrenamiento rígido. Tu furia se basa en un instinto feroz, que puedes asociar con un animal, un espíritu o una parte de ti mismo. Para muchos bárbaros, la fuerza bruta es un martillo y cada problema parece un clavo, mientras que otros intentan contener la tormenta de emociones que llevan dentro y solo liberan su rabia cuando más importa."],
 
             // class feature descriptions
             [/You remain alert to threats around you. Your proficiency rank for Perception increases to expert./, "Permaneces alerta a las amenazas que te rodean. Tu rango de competencia para Percepción se incrementa a experto."],
@@ -3594,6 +3727,26 @@ DB. support functions
             [/You play mental games and employ cognitive tricks to throw off mind-altering effects. Your proficiency rank for Will saves increases to master. When you roll a success at a Will save, you get a critical success instead./, "Utilizas juegos mentales y empleas trucos cognitivos para deshacerte de los efectos enajenadores. Tu rango de competencia para las salvaciones de Voluntad se incrementa a maestro. Cuando consigues un éxito en una salvación de Voluntad, en su lugar consigues un éxito crítico."],
             [/Your proficiency rank for your rogue class DC increases to master\./, "Tu rango de competencia para tu CD de pícaro se incrementa a maestro."],
             [/The target attempts a Fortitude save against your class DC. It then becomes temporarily immune to your Master Strike for 1 day./, "El enemigo debe llevar a cabo una salvación de Fortaleza contra tu CD de clase. A continuación queda inmune de forma temporal a tu Golpe maestro durante 1 día."],
+            [/Your rage wells up from a dominant instinct - one you learned from a tradition or that comes naturally to you. Your instinct gives you an ability, requires you to avoid certain behaviors, grants you increased damage and resistances at higher levels, and allows you to select feats tied to your instinct./, "Tu furia surge de un instinto dominante, uno que aprendiste de una tradición o que te resulta natural. Tu instinto te proporciona una aptitud, te obliga a evitar ciertos comportamientos, te otorga más daño y mejores resistencias a niveles superiores y te permite seleccionar dotes relacionadas con tu instinto. Para obtener más información, consulta Instintos en la página 74."],
+            [/The fury of a wild predator fills you when you Rage, granting you ferocious unarmed attacks\. Cultures that revere vicious animals \(such as apes or bears\) give rise to barbarians with this instinct\. You might also be at war with an uncontrollable, animalistic side of your personality, or you might be a descendant of a werewolf or another werecreature\. Select an animal from the Animal Instincts table that best matches your chosen animal\./, "Cuando entras en furia te invade la furia de un depredador salvaje, otorgándote feroces ataques sin armas. Las culturas que veneran a los animales feroces (como los simios o los osos) dan lugar a bárbaros con este instinto. También puedes estar en guerra con una parte animal e incontrolable de tu personalidad, o ser descendiente de un hombre lobo u otro licántropo. Selecciona un animal de la tabla de Instintos animales (en la página 74) que mejor se ajuste al animal que has elegido."],
+            [/Fist 1d10 B Grapple, unarmed/, "Puño 1d10 Contundente [sin armas]"],
+            [/Jaws 1d10 P unarmed and Claw 1d6 S Agile, unarmed/, "Mandíbulas 1d10 Perforante [sin armas] y Garra 1d6 Cortante [ágil, sin armas]"],
+            [/Horn 1d10 P Shove, unarmed/, "Cuerno 1d10 Perforante [empujón, sin armas]"],
+            [/Antler 1d10 P grapple, unarmed/, "Cornamenta 1d10 Perforante [presa]"],
+            [/Jaws 1d10 B Unarmed and Tongue 1d6 B Agile, unarmed/, "Mandíbulas 1d10 Perforante [sin armas] y Lengua 1d6 Contundente [ágil, sin armas]"],
+            [/Jaws 1d10 P Grapple, unarmed/, "Mandíbulas 1d10 Perforante [presa, sin armas]"],
+            [/Fangs 1d10 P Grapple, unarmed/, "Colmillos 1d10 Perforante [presa, sin armas]"],
+            [/Jaws 1d10 P Trip, unarmed/, "Mandíbulas 1d10 Perforante [derribo, sin armas]"],
+            [/You summon the fury of a mighty dragon and manifest incredible abilities. Perhaps your culture reveres draconic majesty, or you gained insights by drinking or bathing in dragon’s blood or watching a marauding wyrm burn your village. Select a type of dragon from the Dragon Instincts table as your instinct’s dragon type. your GM might allow you to choose dragons from other sources and determine their tradition and dragon breath type./, "Invocas la furia de un poderoso dragón y manifiestas aptitudes increíbles. Tal vez tu cultura venera la majestuosidad dracónica, o adquiriste conocimientos bebiendo o bañándote en sangre de dragón u observando cómo una sierpe depredadora quemaba tu aldea. Selecciona un tipo de dragón de la tabla de Instintos de dragón (en la página 75) como tipo de dragón de tu instinto. Estos son los dragones del Manual de monstruos, pero tu DJ podría permitirte elegir dragones de otras fuentes y determinar su tradición y tipo de aliento de dragón."],
+            [/Your rage comes from a deep and purely personal well within you. You use your rage as you choose./, "Tu furia proviene de un pozo profundo y puramente personal en tu interior. Usas tu furia como quieres."],
+            [/Your rage gives you the raw power and size of a giant\. This doesn’t necessarily mean you revere giants—you might scoff at them or even aspire to slay them! You could instead seem like a giant to other people due to your exceptional strength or larger-than-life emotions and ego\./, "Tu furia te proporciona la fuerza bruta y el tamaño de un gigante. Esto no significa necesariamente que veneres a los gigantes, ¡puede que te burles de ellos o que incluso aspires a matarlos! En cambio, a los demás puedes parecerles un gigante debido a tu fuerza excepcional o a tus emociones y ego desmesurados."],
+            [/Whether you are emotionally sensitive to the spirits around you; worship ancestors or apparitions; or are haunted by the specter of an ancestor, relative, friend, or foe, your rage takes the form of a spiritual possession./, "Tanto si eres emocionalmente sensible a los espíritus que te rodean, adoras a antepasados o apariciones; o te persigue el espectro de un antepasado, pariente, amigo o enemigo, tu rabia adopta la forma de una posesión espiritual."],
+            [/A deep distrust of magic drives you to forgo and counter the metaphysical nonsense of spellcasters. Whether you’re a member of a superstitious family or culture that distrusts magic, a warrior in constant battle against wizards and witches, a survivor of a magical accident that instilled an intense aversion in your mind and body, or a scion of a bloodline known for its magic resistance, your rage is inimical to magic. This makes you an excellent mage hunter but slow to trust practitioners of magical arts./, "Una profunda desconfianza hacia la magia te impulsa a renunciar y contrarrestar las sandeces metafísicas de los lanzadores de conjuros. Ya seas miembro de una familia o cultura supersticiosa que desconfía de la magia, un guerrero en lucha constante contra magos y brujos, un superviviente de un accidente mágico que infundió una intensa aversión en tu mente y cuerpo, o un vástago de una estirpe conocida por su resistencia a la magia, tu furia es adversa a la magia. Esto te convierte en un excelente cazador de magos, pero tardas en confiar en los practicantes de las artes mágicas."],
+            [/While raging, you gain a \+2 status bonus to all saves against magic\. Increase your damage from Rage from 2 to 3, or 4 against creatures you have witnessed Casting a Spell within the last hour\. When you Rage, you regain Hit Point equal to the temporary HP you gained from the Rage action; you then can’t regain HP in this way again for 10 minutes\. While raging, if you willingly accept the effects of a magic spell or effect, you are frightened 1\. You cannot reduce your frightened condition below 1 as long as you are affected by the spell or effect\./, "Mientras estás en furia, obtienes un bonificador +2 por estatus a todas las salvaciones contra magia. Aumenta tu daño por furia de 2 a 3, o a 4 contra criaturas a las que hayas presenciado lanzar un conjuro en la última hora. Cuando usas furia, recuperas tantos Puntos de Golpe como los PG temporales que ganaste con la acción Furia; luego no puedes volver a recuperar PG de esta forma durante 10 minutos. Mientras estás en furia, si aceptas voluntariamente los efectos de un conjuro o efecto mágico, quedas asustado 1. No puedes reducir el valor de tu estado asustado por debajo de 1 mientras te afecte el conjuro o efecto."],
+            [/So long as you are able to move freely, your fury is instinctive and instantaneous. You Rage./, "Mientras puedas moverte libremente, tu furia es instintiva e instantánea. Entras en furia."],
+            [/You deal 2 additional damage on melee Strikes\. This additional damage is halved if your weapon or unarmed attack is agile\./, "Infliges 2 puntos de daño adicionales en tus Golpes cuerpo a cuerpo. Este daño adicional se reduce a la mitad si tu arma o ataque sin armas es ágil."],
+            [/You can't use actions with the concentrate trait unless they also have the rage trait\. You can Seek while raging\. Rage lasts for 1 minute, until you fall unconscious, or until the encounter ends, whichever comes first\. You can't voluntarily stop raging\. When you stop raging, you lose any remaining temporary Hit Points from Rage, and can't gain temporary Hit Points from using the Rage action again for 1 minute\./, "No puedes usar acciones con el rasgo concentrar a menos que también tengan el rasgo furia. Puedes Buscar mientras estás en furia. La furia dura 1 minuto, hasta que quedas inconsciente o hasta que termina el encuentro, lo que ocurra primero. No puedes dejar de estar en furia voluntariamente. Cuando dejas de estar en furia, pierdes los Puntos de Golpe temporales que te queden de la Furia y no puedes obtener Puntos de Golpe temporales usando la acción Furia durante 1 minuto."],
+            [/The urge to fight drives you ever forward\. You gain a \+5 foot status bonus to your Speed\. This bonus increases to \+10 feet while you're raging\./, "La necesidad de luchar te impulsa a seguir adelante. Obtienes un bonificador de +5 pies (1,5 m) por estatus a tu Velocidad, que aumenta a +10 pies (3 m) mientras estás en furia."],
 
             // class feat descriptions
             [/Your studies make you informed on every subject. You are trained in Bardic Lore, a special Lore skill that can be used only to Recall Knowledge, but on any topic. If you have legendary proficiency in Occultism, you gain expert proficiency in Bardic Lore, but you can't increase your proficiency rank in Bardic Lore by any other means./, "Tus estudios te permiten estar informado de prácticamente todos los temas. Estás entrenado en Saber (bárdico), una habilidad de Saber especial que se puede utilizar tan sólo para Recordar conocimiento, pero sobre cualquier tema. Si tu competencia en ocultismo es a rango legendario, obtienes competencia a rango experto en Saber (bárdico), pero no puedes incrementar dicho nivel por ningún otro medio."],
@@ -3655,6 +3808,13 @@ DB. support functions
             [/You tumble under and behind your foe, your rapid movement letting you catch them off guard. When you successfully Tumble Through, the foe whose space you passed through is off-guard against the next attack you make before the end of your turn./, "Pasas rodando por detrás y por debajo de tu enemigo, y tu rápido movimiento te permite tomarle desprevenido. Cuando ejecutas con éxito Pasar haciendo acrobacias, el enemigo cuyo espacio atraviesas queda desprevenido contra el siguiente ataque que llevas a cabo antes del final de tu turno."],
             [/You use an attack with one weapon to distract your foe from a second attack coming at a different angle. Make one Strike with each of your two melee weapons, both against the same target. The target is automatically off-guard against the second attack. Apply your multiple attack penalty to the Strikes normally./, "Utilizas un ataque con una arma para distraer a tu enemigo de un segundo ataque que le llega de un ángulo diferente. Da un Golpe con cada una de tus armas cuerpo a cuerpo, ambos contra el mismo objetivo. El objetivo queda automáticamente desprevenido contra el segundo ataque. Aplica tu penalizador por ataque múltiple a los Golpes de la forma habitual."],
             [/After downing a foe, you menace another\. Attempt to Demoralize a creature within 60 feet, with a \+2 circumstance bonus\. If you have legendary proficiency in Intimidation, you can use this as a free action with the same trigger\./, "Tras abatir a un enemigo, amenazas a otro. Haz una prueba para Desmoralizar a una criatura a 60 pies (18 m) o menos, con un bonificador +2 por circunstancia. Si dispones del rango legendario en Intimidación, puedes utilizar esto como una acción gratuita con el mismo desencadenante."],
+            [/When you are raging, your visual senses improve, granting you darkvision./, "Cuando estás en furia, tus sentidos visuales mejoran, otorgándote visión en la oscuridad."],
+            [/In the heat of battle, you are capable of amazing feats of strength\. While you are raging, increase your encumbered and maximum Bulk limits by 2; you also gain a \+1 status bonus to Athletics checks to lift heavy objects, Escape, and Force Open\./, "En el fragor de la batalla, eres capaz de demostraciones de fuerza asombrosas. Mientras estás en furia, incrementas en 2 tus límites de impedido e Impedimenta máxima; también obtienes un bonificador +1 por estatus a las pruebas de Atletismo para levantar objetos pesados, Abrir por la fuerza y Huir."],
+            [/Few can sway you from your goals while the fury of combat fills you\. While raging, you gain a \+2 status bonus to saving throws against emotion effects\./, "Pocos pueden desviarte de tus objetivos mientras te invade la furia del combate. Mientras estás en furia, obtienes un bonificador +2 por estatus a las tiradas de salvación contra los efectos de emoción."],
+            [/You push back your rage for a moment in order to think clearly. Until the end of this turn, you can use actions with the concentrate trait even if those actions don't have the rage trait./, "Reprimes tu rabia durante un momento para pensar con claridad. Hasta el final de este turno, puedes usar acciones con el rasgo concentrar incluso si dichas acciones no tienen el rasgo furia."],
+            [/Your fury fills your foes with fear\. While you are raging, your Demoralize and Scare to Death actions \(from the Intimidation skill and an Intimidation skill feat, respectively\) gain the rage trait, allowing you to use them while raging\. As soon as you meet the prerequisites for the skill feats Intimidating Glare and Scare to Death, you gain these feats\./, "Tu furia infunde miedo a tus enemigos. Mientras estás en furia, tus acciones Desmoralizar y Susto mortal (de la habilidad de Intimidación y de una dote de habilidad de Intimidación, respectivamente) obtienen el rasgo furia, lo que te permite usarlas mientras estás en furia. En cuanto cumplas los prerrequisitos de las dotes de habilidad Mirada intimidante y Susto mortal, obtienes estas dotes."],
+            [/PATHBUILDER - reselect this feat to award free feats after training skills./, "PATHBUILDER - reselecciona esta dote para obtener las dotes gratuitas desde estar entrenado en las habilidades requisitos."],
+            [/Thrown weapons become especially deadly in your fury. You apply the additional damage from Rage to your thrown weapon attacks. If you have the Brutal Critical feat or the devastator class feature, apply their benefits to thrown weapon attacks./, "Las armas arrojadizas se vuelven especialmente letales con tu furia. Aplicas el daño adicional de Furia a tus ataques con armas arrojadizas. Si tienes la dote Crítico brutal o el rasgo de clase devastador, aplica sus beneficios a los ataques con armas arrojadizas."],
 
             // skill feat descriptions
             [/Your knowledge has expanded to encompass a new field. Choose a Lore skill subcategory. You become trained in it. At 3rd, 7th, and 15th levels, you gain an additional skill increase you can apply only to the chosen Lore subcategory./, "Tu conocimiento se ha expandido hasta abarcar un nuevo campo. Elige una subcategoría adicional de Saber. Obtienes el rango entrenado en ella. En los niveles 3.º, 7.º y 15.º, obtienes un incremento de habilidad adicional que tan sólo puedes aplicar a la subcategoría de Saber elegida."],
@@ -5426,5 +5586,98 @@ DB. support functions
             return document.getElementById(idName).checked;
         }
         return currentState;
+    }
+
+    /*--- waitForKeyElements():  A utility function, for Greasemonkey scripts,
+    that detects and handles AJAXed content.
+
+    Usage example:
+
+        waitForKeyElements (
+            "div.comments"
+            , commentCallbackFunction
+        );
+
+        //--- Page-specific function to do what we want when the node is found.
+        function commentCallbackFunction (jNode) {
+            jNode.text ("This comment changed by waitForKeyElements().");
+        }
+
+    IMPORTANT: This function requires your script to have loaded jQuery.
+    */
+    function waitForKeyElements (
+        selectorTxt,    /* Required: The jQuery selector string that
+                            specifies the desired element(s).
+                        */
+        actionFunction, /* Required: The code to run when elements are
+                            found. It is passed a jNode to the matched
+                            element.
+                        */
+        bWaitOnce,      /* Optional: If false, will continue to scan for
+                            new elements even after the first match is
+                            found.
+                        */
+        iframeSelector  /* Optional: If set, identifies the iframe to
+                            search.
+                        */
+    ) {
+        var targetNodes, btargetsFound;
+
+        if (typeof iframeSelector == "undefined")
+            targetNodes     = $(selectorTxt);
+        else
+            targetNodes     = $(iframeSelector).contents ()
+                                            .find (selectorTxt);
+
+        if (targetNodes  &&  targetNodes.length > 0) {
+            btargetsFound   = true;
+            /*--- Found target node(s).  Go through each and act if they
+                are new.
+            */
+            targetNodes.each ( function () {
+                var jThis        = $(this);
+                var alreadyFound = jThis.data ('alreadyFound')  ||  false;
+
+                if (!alreadyFound) {
+                    //--- Call the payload function.
+                    var cancelFound     = actionFunction (jThis);
+                    if (cancelFound)
+                        btargetsFound   = false;
+                    else
+                        jThis.data ('alreadyFound', true);
+                }
+            } );
+        }
+        else {
+            btargetsFound   = false;
+        }
+
+        //--- Get the timer-control variable for this selector.
+        var controlObj      = waitForKeyElements.controlObj  ||  {};
+        var controlKey      = selectorTxt.replace (/[^\w]/g, "_");
+        var timeControl     = controlObj [controlKey];
+
+        //--- Now set or clear the timer as appropriate.
+        if (btargetsFound  &&  bWaitOnce  &&  timeControl) {
+            //--- The only condition where we need to clear the timer.
+            clearInterval (timeControl);
+            delete controlObj [controlKey]
+        }
+        else {
+            //--- Set a timer, if needed.
+            if ( ! timeControl) {
+                timeControl = setInterval ( function () {
+                        waitForKeyElements (    selectorTxt,
+                                                actionFunction,
+                                                bWaitOnce,
+                                                iframeSelector
+                                            );
+                    },
+                    300
+                );
+                controlObj [controlKey] = timeControl;
+            }
+        }
+        waitForKeyElements.controlObj   = controlObj;
     }
 })();
