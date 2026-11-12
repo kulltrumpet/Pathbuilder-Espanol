@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Pathbuilder Español
 // @namespace    https://github.com/kulltrumpet/Pathbuilder-Espanol
-// @version      1.03.00
+// @version      1.04.00
 // @description  Pathbuilder traducido a español
 // @author       Kull Trumpet
 
@@ -887,15 +887,6 @@ DB. support functions
             [/\bMaster Rogue\b/, "Maestría de pícaro"],
             [/\bAnimal Instinct\b/, "Instinto de animal"],
             [/\banimal instinct\b/, "instinto de animal"],
-            [/\bApe\b/, "Simio"],
-            [/\bBear\b/, "Oso"],
-            [/\bBull\b/, "Toro"],
-            [/\bCat\b/, "Gato"],
-            [/\bDeer\b/, "Ciervo"],
-            [/\bFrog\b/, "Rana"],
-            [/\bShark\b/, "Tiburón"],
-            [/\bSnake\b/, "Serpiente"],
-            [/\bWolf\b/, "Lobo"],
             [/Bestial Rage/, "Furia bestial"],
             [/While raging, you gain your chosen animal’s unarmed attack \(or attacks\), but you’re unable to use weapons\. The specific attack gained, the damage it deals, and its traits are listed in the Animal Instincts table\. These attacks are in the brawling group\. Your Rage action gains the morph and primal traits\./, "Mientras estás en furia, obtienes el ataque (o ataques) sin armas del animal elegido, pero no puedes usar armas. El ataque específico obtenido, el daño que inflige y sus rasgos se indican en la tabla Instintos animales. Estos ataques pertenecen al grupo pelea. Con tu acción de Furia obtienes los rasgos morfismo y primigenio."],
             [/Increase the damage die size for the unarmed attacks granted by your chosen animal by one step, and increase the additional damage from Rage from 2 to 5 for your chosen animal’s unarmed attacks. If you have greater weapon specialization, increase the damage from Rage from 5 to 12 for your chosen animal’s unarmed attacks./, "Incrementa en un paso el tamaño del dado de daño de los ataques sin armas otorgados por el animal que hayas elegido, y aumenta el daño adicional de Furia de 2 a 5 para los ataques sin armas de tu animal elegido. Si tienes especialización mayor en armas, aumenta el daño de Furia de 5 a 12 para los ataques sin armas del animal que hayas elegido."],
@@ -2112,6 +2103,7 @@ DB. support functions
             [/The target regains 2d8 Hit Points, and loses the wounded condition./, "El objetivo recupera 2d8 Puntos de Golpe y pierde el estado herido."],
             [/The target takes 1d8 damage./, "El objetivo sufre 1d8 daño."],
 
+            [/\bRanged Trip\b/, "Derribo a distancia"],
             [/\bTrip\b/, "Derribar"],
             [/The target falls, lands prone, and takes 1d6 bludgeoning damage./, "El objetivo cae al suelo, queda tumbado y sufre 1d6 daño contundente."],
             [/The target falls and lands prone./, "El objetivo cae y queda tumbado."],
@@ -2202,7 +2194,20 @@ DB. support functions
             [/\bTrident\b/, "Tridente"],
             [/\bWar Flail\b/, "Mangual de guerra"],
             [/\bWarhammer\b/, "Martillo de guerra"],
+            [/\bWhip Claw\b/, "Garra látigo"],
             [/\bWhip\b/, "Látigo"],
+            [/\bAdze\b/, "Azuela"],
+            [/\bBreaching Pike\b/, "Pica de brecha"],
+            [/\bCapturing Spetum\b/, "Ronca apresadora"],
+            [/\bClaw Blade\b/, "Hoja de garra"],
+            [/\bFangwire\b/, "Cable colmillo"],
+            [/\bFlying Talon\b/, "Garra voladora"],
+            [/\bHand Adze\b/, "Azuela de mano"],
+            [/\bSpirit Thresher\b/, "Trillador espiritual"],
+            [/\bSword Cane\b/, "Bastón estoque"],
+            [/\bTengu Gale Blade\b/, "Hoja de vendaval de tengu"],
+            [/\bThunder Sling\b/, "Honda de trueno"],
+            [/\bTricky Pick\b/, "Pico tramposo"],
 
             // armor
             [/\bExplorer's Clothing\b/, "Ropa de explorador"],
@@ -2671,10 +2676,11 @@ DB. support functions
             [/\bReach\b/, "Alcance"],
             [/\bThrown\b/, "Arrojadiza"],
             [/\bSweep\b/, "Barrido"],
-            [/\bRanged Trip\b/, "Derribo a distancia"],
+            [/\bRazing\b/, "Demolición"],
             [/\bTrip\b/, "Derribo"],
             [/\bDisarm\b/, "Desarme"],
             [/\bShove\b/, "Empujón"],
+            [/\bHampering\b/, "Entorpecer"],
             [/\bAttached to Shield\b/, "Fijado al escudo"],
             [/\bTwin\b/, "Gemela"],
             [/\bJousting\b/, "De justa"],
@@ -2695,6 +2701,7 @@ DB. support functions
             [/\bVersatile P\b/, "Versátil Per"],
             [/\bForceful\b/, "Vigorosa"],
             [/\bVolley\b/, "Volea"],
+            [/\bTethered\b/, "Amarrada"],
 
             [/\bBulwark\b/, "Baluarte"],
             [/\bComfort\b/, "Cómoda"],
@@ -2922,6 +2929,16 @@ DB. support functions
             [/\bHit Points\b/, "Puntos de golpe"],
             [/\bHIT POINTS\b/, "PUNTOS DE GOLPE"],
 
+            [/\bApe\b/, "Simio"],
+            [/\bBear\b/, "Oso"],
+            [/\bBull\b/, "Toro"],
+            [/\bCat\b/, "Gato"],
+            [/\bDeer\b/, "Ciervo"],
+            [/\bFrog\b/, "Rana"],
+            [/\bShark\b/, "Tiburón"],
+            [/\bSnake\b/, "Serpiente"],
+            [/\bWolf\b/, "Lobo"],
+
             [/\bDraconic\b/, "Dracónico"],
             [/\bFey\b/, "Feérico"],
 
@@ -3055,13 +3072,17 @@ DB. support functions
             [/\bA dos manos\b/, "Two-Hand"],
             [/Ágil\b/, "Agile"],
             [/\bAlcance\b/, "Reach"],
+            [/\bAmarrada\b/, "Tethered"],
+            [/\bApresar\b/, "Grapple"],
             [/\bArrojadiza\b/, "Thrown"],
             [/\bBarrido\b/, "Sweep"],
             [/\bBallesta\b/, "Crossbow"],
+            [/\bDemolición\b/, "Razing"],
             [/\bDerribo a distancia\b/, "Ranged Trip"],
             [/\bDerribo\b/, "Trip"],
             [/\bDesarme\b/, "Disarm"],
             [/\bEmpujar\b/, "Shove"],
+            [/\bEntorpecer\b/, "Hampering"],
             [/\bFijado\b/, "Attached"],
             [/\bGemela\b/, "Twin"],
             [/\bDe justa\b/, "Jousting"],
@@ -4443,6 +4464,23 @@ DB. support functions
             [/This large flail has a long shaft connected to a shorter piece of stout wood or metal that's sometimes inlaid with spikes\./i, "Este mangual de grandes dimensiones tiene un mango largo, conectado a una pieza más corta de recia madera o de metal, a veces tachonada de púas."],
             [/This weapon has a wooden shaft ending in a large, heavy metal head\. The head of the hammer might be single-sided or double-sided, but it's always capable of delivering powerful bludgeoning blows\./i, "Esta arma tiene un mango de madera que acaba en una cabeza grande y pesada de metal. La cabeza del martillo puede ser sencilla o doble, pero siempre es capaz de propinar fuertes golpes."],
             [/This long strand of thick leather, often braided, delivers a painful but nonlethal slash at a distance, usually accompanied by a distinctive cracking sound\./i, "Este largo trozo de grueso cuero, a menudo trenzado, propina un golpe cortante, doloroso pero no letal, a distancia acompañado por lo general de un chasquido distintivo."],
+            [/A common cutting tool, an adze resembles an axe—but the cutting edge is horizontal, rather than vertical\. The adze’s shape makes it popular among woodworkers, and tripkee builders often use them to construct their treetop homes\. The tool also serves as an effective weapon, due in part to the immense strength required to swing it\./, "Una herramienta de corte común que se parece a un hacha, pero tiene el filo en horizontal, en lugar de en vertical. La forma de la azuela la hace popular entre los carpinteros, y los constructores tripkees las utilizan a menudo para construir sus casas en las copas de los árboles. Esta herramienta también sirve como un arma eficaz, en parte debido a la inmensa fuerza necesaria para blandirla."],
+            [/Forged with a heavy metal wedge effective at damaging enemy shields, breaching pikes are often used by hobgoblin infantry alongside a tower shield./, "Forjadas con una pesada cuña de metal eficaz para dañar los escudos enemigos, las picas de brecha suelen ser utilizadas por la infantería hobgoblin junto a un escudo pavés."],
+            [/Hobgoblins use these polearms both as standard issue for aggressive military units and on an individual basis for hunting fugitives./, "Los hobgoblins utilizan estas armas de asta tanto como arma estándar para unidades militares agresivas como de forma individual para cazar fugitivos."],
+            [/This handheld weapon’s three parallel blades extend between the fingers to resemble the natural claws of the amurruns who created them, providing a way for those catfolk without suitable natural claws to share the fighting customs of their kin./, "Las tres cuchillas paralelas de esta arma de mano se extienden entre los dedos para parecerse a las garras naturales de los amurrunes que las crearon, proporcionando a los félidos sin garras naturales adecuadas una forma de compartir las costumbres de lucha de sus congéneres."],
+            [/This specialized club is designed for throwing and useful in both combat and hunting. Tripkees use them to take down creatures that hide high in treetops./, "Este garrote especializado está diseñado para ser lanzado y es útil tanto en combate como en la caza. Los tripkees los utilizan para abatir criaturas que se esconden en lo alto de las copas de los árboles."],
+            [/This asymmetrical bow, made of laminated bamboo, wood, and leather, stands 6 feet or more in height. It’s most often used while mounted./, "Este arco asimétrico, hecho de bambú laminado, madera y cuero, mide 6 pies (180 cm) o más. Se usa sobre todo montado."],
+            [/This kobold wire is thin and hard to see, making it perfect for an ambush\. The wielder flicks one handle around a vulnerable spot so that it serves as a catch for the wire, then yanks the other handle back, pulling the wire tight and inflicting painful lacerations\. The function and name come from a wire-based trap called a “slow fang\.”/, "Este cable kóbold es fino y difícil de ver, lo que lo hace perfecto para una emboscada. El que lo empuña gira rápidamente una empuñadura alrededor de un punto vulnerable para que sirva de enganche para el cable, y luego tira de la otra empuñadura hacia atrás, tensando el cable e infligiendo dolorosos cortes. La función y el nombre proceden de una trampa de cable llamada «colmillo lento»."],
+            [/This weapon consists of a three-pronged barbed hook attached to a length of chain. It can be used in melee to stab foes or hurled at a range. Some kobolds are particularly fond of using flying talons, especially as a sort of badge of office above those who serve them./, "Esta arma consiste en un garfio de tres puntas con púas unido a una cadena. Puede utilizarse cuerpo a cuerpo para apuñalar a los enemigos o lanzarse a distancia. Algunos kóbolds son especialmente aficionados a usar garras voladoras, sobre todo como una especie de insignia de su cargo superior ante quienes les sirven."],
+            [/The adze’s smaller version is useful for delicate woodworking in cramped spaces. Tripkees use hand adzes for crafting and as close quarters weapons./, "Esta versión más pequeña de la azuela es útil para trabajar la madera con delicadeza en espacios reducidos. Los tripkees utilizan azuelas de mano para la artesanía y como armas cuerpo a cuerpo."],
+            [/This curved sickle sword has a pointed tip, allowing it to be swung in wide arcs or thrust vertically around enemy defenses. The tip of a khopesh is hooked and can be used to trip an opponent./, "Esta espada curvada en forma de hoz tiene una punta afilada que permite blandirla en amplios arcos o clavarla verticalmente alrededor de las defensas enemigas. La punta de un khopesh tiene forma de gancho y puede utilizarse para derribar a un oponente."],
+            [/Also known as a hunga munga or danisco, this knife-axe hybrid consists of a hilt and blade that curves backward toward the wielder. The blade’s curve is such that, after a mambele has struck a victim, more damage is dealt as the weapon is extracted from the victim’s body./, "También conocido como hunga munga o danisco, este híbrido de cuchillo y hacha consta de una empuñadura y una hoja que se curva hacia atrás, hacia el portador. La curvatura de la hoja es tal que, después de que un mambele haya golpeado a una víctima, se inflige más daño al extraer el arma de su cuerpo."],
+            [/Bones, some solid and others splintered, are affixed to metal chains at the end of a long stick to form a powerful flail. Many kholo warriors insist the vicious crack the weapon makes as it strikes loosens fragments of the soul like husks struck from grains./, "Huesos, algunos macizos y otros astillados, se pegan a cadenas de metal en el extremo de un palo largo para formar un poderoso mangual. Muchos kholo guerreros insisten en que el feroz chasquido que produce el arma al golpear separa fragmentos del alma como la paja del trigo."],
+            [/This slender, rapier-like sword is concealed within a wooden or metal cane that serves as a sheath, making it an inconspicuous weapon easy to slip past inspections or into high-society events. A sword cane is typically 4 feet long when sheathed, and its hilt is usually capped with a wooden or metal decoration./, "Esta espada fina parecida a una ropera está oculta en una caña de madera o de metal que le sirve de vaina, convirtiéndola en un arma disimulada que no despierta sospechas en una inspección simple y es fácil de introducir en un evento de la alta sociedad. Un bastón estoque mide típicamente 4 pies (1,2 m) de longitud cuando está envainado, y su empuñadura suele ir rematada por una decoración de madera o de metal."],
+            [/This fan-shaped sword designed by tengu smiths has five broad blades that join at its hilt. Tengu sailors use them as makeshift weather vanes, for the sword spins in the wind’s direction when loosely held aloft./, "Esta espada en forma de abanico diseñada por herreros tengu tiene cinco hojas anchas que se unen en la empuñadura. Los marineros tengu la utilizan como veleta improvisada, ya que la espada gira en la dirección del viento cuando se sostiene en alto."],
+            [/Tengu use these specialized slings to fire darts further and with greater force than when thrown by hand. A thunder sling uses darts as ammunition. It can also hurl blowgun darts as ammunition but deals 1d4 piercing damage instead of 1d6 when used this way./, "Los tengu utilizan estas hondas especializadas para disparar dardos más lejos y con más fuerza que cuando se lanzan con la mano. La honda del trueno utiliza dardos como munición. También puede lanzar dardos de cerbatana como munición, pero inflige 1d4 puntos de daño perforante en vez de 1d6."],
+            [/This ingenious kobold pick conceals several hidden traps that the wielder can activate to trick and befuddle foes with a variety of damaging blades and bludgeoning surfaces./, "Este ingenioso pico kóbold esconde varias trampas ocultas que el portador puede activar para engañar y confundir a los enemigos con una variedad de cuchillas dañinas y superficies contundentes."],
+            [/The whip claw is a long tether affixed to clawlike daggers, allowing the wielder to fling and retract them with deadly precision. Catfolk developed this weapon to provide extended reach when hunting dangerous animals and wield them with unmatched expertise./, "La garra látigo es una larga cuerda atada a unas dagas en forma de garra, lo que permite a su portador lanzarlas y retraerlas con una precisión mortal. Los félidos fueron los primeros en desarrollar esta arma para tener mayor alcance al cazar animales peligrosos, y la manejan con una pericia inigualable."],
 
             // armor descriptions
             [/Plate mail consists of interlocking plates that encase nearly the entire body in a carapace of steel\. It is costly and heavy, and the wearer often requires help to don it correctly, but it provides some of the best defense armor can supply\. A suit of this armor comes with an undercoat of padded armor and a pair of gauntlets\./i, "Una armadura completa consiste en placas metálicas entrelazadas, que cubren casi todo el cuerpo en un caparazón de acero. Es cara y pesada y el portador a menudo requiere ayuda para ponérsela correctamente, pero proporciona la mejor defensa que una armadura puede conceder. Una armadura de este tipo lleva por debajo una armadura acolchada e incluye unos guanteletes."],
